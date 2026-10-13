@@ -1,0 +1,7 @@
+sdk.dir=/usr/lib/android-sdk
+flutter.sdk=/home/amr/flutter
+sdk.dir=/usr/lib/android-sdk
+flutter.sdk=/home/amr/flutter
+flutter.buildMode=release
+flutter.versionName=1.0.0
+flutter.versionCode=1
