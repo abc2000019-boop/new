@@ -17,12 +17,10 @@ tasks.register<Delete>("clean") {
     delete(rootProject.buildDir)
 }
 
-// 🚀 الكود الحاسم لإجبار حزمة file_picker وكافة الحزم على التجميع بإصدار 36 رغماً عن الكاش
+// 🚀 الكود المحدث: إجبار الحزم على إصدار 36 مباشرة وبدون أي تعارض مع حالة السيرفر
 subprojects {
-    afterEvaluate {
-        if (project.hasProperty("android")) {
-            val androidExtensions = project.extensions.getByName("android") as com.android.build.gradle.BaseExtension
-            androidExtensions.compileSdkVersion(36)
-        }
+    if (project.hasProperty("android")) {
+        val androidExtensions = project.extensions.getByName("android") as com.android.build.gradle.BaseExtension
+        androidExtensions.compileSdkVersion(36)
     }
 }
