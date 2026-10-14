@@ -1,3 +1,5 @@
+# 1. ضيف logger في pubspec.yaml
+cat > ~/Desktop/test/testb/smart1/pubspec.yaml << 'EOF'
 name: smart1
 description: "Smart Home ESP32 Controller"
 publish_to: 'none'
@@ -17,6 +19,7 @@ dependencies:
   file_picker: ^8.1.2
   http: ^1.2.2
   cupertino_icons: ^1.0.8
+  logger: ^2.4.0
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +28,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+EOF
+
+# 2. نزّل المكتبات
+cd ~/Desktop/test/testb/smart1
+flutter clean
+flutter pub get
+
+# 3. ابني
+flutter build apk --release
