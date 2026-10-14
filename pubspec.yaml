@@ -11,19 +11,17 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  web_socket_channel: ^2.4.0
-  shared_preferences: ^2.2.2
-  multicast_dns: ^0.3.2
-  file_picker: 5.5.0
-  http: ^1.1.0
-  cupertino_icons: ^1.0.6
-  logger: ^2.4.0
-  uuid: ^4.4.0
+  web_socket_channel: ^3.0.1
+  shared_preferences: ^2.3.3
+  multicast_dns: ^0.3.2+6
+  file_picker: ^8.1.2
+  http: ^1.2.2
+  cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 flutter:
   uses-material-design: true
