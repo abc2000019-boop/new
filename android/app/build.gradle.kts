@@ -1,12 +1,10 @@
 plugins {
     id("com.android.application")
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
 
 android {
     namespace = "com.example.smart1"
-    // 1. تثبيت رقم إصدار التجميع متوافقاً مع السيرفر
     compileSdk = 36
 
     compileOptions {
@@ -16,18 +14,14 @@ android {
 
     defaultConfig {
         applicationId = "com.example.smart1"
-        // 2. تعيين قيمة حقيقية للـ minSdk بدلاً من الاختصار لتفادي الأخطاء
         minSdk = 21
-        // 3. تثبيت إصدار التنزيل المستهدف
         targetSdk = 36
-        
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
     buildTypes {
         release {
-            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
         }
     }
@@ -41,4 +35,14 @@ kotlin {
 
 flutter {
     source = "../.."
+}
+
+// 🚀 الكود السحري: إجبار جميع الحزم الخارجية (مثل file_picker) على التجميع بإصدار 36
+subprojects {
+    afterEvaluate {
+        if (project.hasProperty("android")) {
+            val androidExtensions = project.extensions.getByName("android") as com.android.build.gradle.BaseExtension
+            androidExtensions.compileSdkVersion(36)
+        }
+    }
 }
