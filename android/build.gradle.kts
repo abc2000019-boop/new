@@ -5,20 +5,24 @@ allprojects {
     }
 }
 
-val newBuildDir: Directory =
-    rootProject.layout.buildDirectory
-        .dir("../../build")
-        .get()
-rootProject.layout.buildDirectory.value(newBuildDir)
-
+rootProject.buildDir = file("../build")
 subprojects {
-    val newSubprojectBuildDir: Directory = newBuildDir.dir(project.name)
-    project.layout.buildDirectory.value(newSubprojectBuildDir)
+    project.buildDir = file("${rootProject.buildDir}/${project.name}")
 }
 subprojects {
     project.evaluationDependsOn(":app")
 }
 
 tasks.register<Delete>("clean") {
-    delete(rootProject.layout.buildDirectory)
+    delete(rootProject.buildDir)
+}
+
+// 🚀 الكود الحاسم لإجبار حزمة file_picker وكافة الحزم على التجميع بإصدار 36 رغماً عن الكاش
+subprojects {
+    afterEvaluate {
+        if (project.hasProperty("android")) {
+            val androidExtensions = project.extensions.getByName("android") as com.android.build.gradle.BaseExtension
+            androidExtensions.compileSdkVersion(36)
+        }
+    }
 }
