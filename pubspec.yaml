@@ -1,8 +1,3 @@
-# 1. امسح الملف
-rm -f ~/Desktop/test/testb/smart1/pubspec.yaml
-
-# 2. اعمل واحد جديد
-cat > ~/Desktop/test/testb/smart1/pubspec.yaml << 'EOF'
 name: smart1
 description: "Smart Home ESP32 Controller"
 publish_to: 'none'
@@ -31,15 +26,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-EOF
-
-# 3. تحقق
-cat ~/Desktop/test/testb/smart1/pubspec.yaml
-
-# 4. نزّل المكتبات
-cd ~/Desktop/test/testb/smart1
-flutter clean
-flutter pub get
-
-# 5. ابني
-flutter build apk --release
